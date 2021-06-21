@@ -1,0 +1,11 @@
+#homeBackground {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+.outline.label .text {
+    -fx-fill: lightseagreen;
+    -fx-stroke: firebrick;
+    -fx-stroke-width: 2px;
+}

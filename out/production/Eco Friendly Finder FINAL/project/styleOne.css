@@ -1,0 +1,23 @@
+#homeBackground {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+.button {
+    -fx-background-color: #000000;
+    -fx-opacity: 0.75;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 50;
+    -fx-font-family: "Bell MT";
+    -fx-background-radius: 0;
+}
+
+.label {
+    -fx-text-alignment: center;
+    -fx-font-family: "Bell MT";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 47;
+}
