@@ -47,14 +47,6 @@ public class SignupController {
     }
 
     private void popUpWindow() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("okayBox.fxml"));
-
-        try {
-            
-        } catch (IOException e) {
-            System.out.println("Error");
-            System.out.println("IOException: " + e.getMessage());
-        }
 
     }
 }
