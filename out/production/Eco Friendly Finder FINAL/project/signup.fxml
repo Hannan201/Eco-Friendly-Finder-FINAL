@@ -66,11 +66,6 @@
                     <font>
                         <Font size="30.0" />
                     </font></Button>
-                <Label fx:id="invalidLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="542.0" textFill="RED">
-                    <font>
-                        <Font name="Bell MT" size="40.0" />
-                    </font>
-                </Label>
             </children>
         </VBox>
     </center>
