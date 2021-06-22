@@ -43,7 +43,7 @@ public class SignupController {
         if ((username == null) || (password == null)
                 || username.isBlank() || password.isBlank()) {
             popUpWindow("Username or password cannot be blank!");
-        } else if (!accountData.createAccount(username + ".Cho", password)) {
+        } else if (!accountData.createAccount(username, password)) {
             popUpWindow("Account already exists!");
             usernameField.clear();
             passwordField.clear();

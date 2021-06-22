@@ -181,7 +181,7 @@ public class MainFile {
     public void rename(String newName) {
         try {
             Path source = Paths.get(file.getName());
-            Files.move(source, source.resolveSibling(newName + ".Cho"));
+            Files.move(source, source.resolveSibling(newName));
         } catch (IOException e) {
             e.printStackTrace();
         }

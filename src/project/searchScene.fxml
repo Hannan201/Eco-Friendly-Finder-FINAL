@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" prefHeight="621.0" prefWidth="1200.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.LoggedinController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="165.0" prefWidth="917.0" text="Welcome To&#10;The Eco-Friendly Alternative Finder&#10;&#10;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="48.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1200.0">
+               <children>
+                  <TextField prefHeight="14.0" prefWidth="638.0" promptText="What would you like to search?" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-radius: 25;">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="143.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1pt; -fx-background-insets: 0;" text="Search">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

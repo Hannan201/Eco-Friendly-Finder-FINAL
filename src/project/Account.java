@@ -12,18 +12,16 @@ public class Account implements Options {
     public Account(String name, String pass) {
         this.username = name;
         this.password = pass;
+        a = new AccountData();
     }
 
     /**
      * This method takes the user input for their new username and uses the changeUserName()
      * method in the class AccountData to change the username of the user in the files.
      */
-    public void changeUsername(Scanner s) {
-        System.out.println("Enter new username:");
-        String newUsername = s.nextLine();
+    public void changeUsername(String newUsername) {
         a.changeUsername(username, newUsername);
-        System.out.println("Username successfully changed to " + username + " .");
-
+        username = newUsername;
     }
 
     /**
@@ -32,21 +30,12 @@ public class Account implements Options {
      * password and will use the changePassword() method in the AccountData class to change the user's
      * password accordingly. If not, then the user is taken back to the menu.
      */
-    public void changePassword(Scanner s) {
-        System.out.println("Enter old password:");
-        String inputPW = s.nextLine();
-        if(inputPW.equals(password)) {
-            System.out.println("Enter new password:");
-            String newPassword = s.nextLine();
-            a.changePassword(username, newPassword, password);
-            System.out.println("Password successfully changed.");
-        }
-        else {
-            System.out.println("You typed in the wrong password.");
-        }
+    public void changePassword(String newPassword) {
+        a.changePassword(username, password, newPassword);
+        password = newPassword;
     }
 
     public static boolean accountIsMade(String username) {
-        return MainFile.isMade(username);
+        return MainFile.isMade(username + ".Cho");
     }
 }

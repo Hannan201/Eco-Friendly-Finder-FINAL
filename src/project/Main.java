@@ -87,7 +87,7 @@ public class Main extends Application {
         borderPane.setCenter(hBox);
 
         Scene scene = new Scene(borderPane, WINDOW_WIDTH, WINDOW_HEIGHT);
-        scene.getStylesheets().add(this.getClass().getResource("styleOne.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("styleOne.css")).toExternalForm());
         borderPane.setId("homeBackground");
         borderPane.requestFocus();
 
