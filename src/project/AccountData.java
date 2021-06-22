@@ -57,7 +57,7 @@ public class AccountData {
      */
     public void viewSavedLinks(String name) {
         String line;
-        MainFile mainFile = new MainFile(name + ".Cho");
+        MainFile mainFile = new MainFile(name);
         mainFile.openForReading();
         mainFile.getLine();
         mainFile.getLine();
@@ -80,7 +80,7 @@ public class AccountData {
      * searchAmazon from the class GettingLinks is used.
      */
     public void saveLinks(String name, ArrayList<String> arrayList) {
-        MainFile mainFile = new MainFile(name + ".Cho");
+        MainFile mainFile = new MainFile(name);
         mainFile.openForWriting(true);
         for (String s : arrayList) {
            mainFile.appendToFile(s);
@@ -98,8 +98,8 @@ public class AccountData {
      * @param pass: A String that conatins the user's password.
      */
     public void clearFileLinks(String name, String pass){
-        MainFile mainFile = new MainFile(name + ".Cho");
-        mainFile.openForWriting();
+        MainFile mainFile = new MainFile(name);
+        mainFile.openForWriting(false);
         mainFile.writeToFile(name + "," + pass + "\n");
         mainFile.closeForWriting();
     }
@@ -112,14 +112,15 @@ public class AccountData {
      * @param name: A String containing the username of the user while they create their account.
      * @param pass: A String containing the password of the user's account
      */
-    public void createAccount(String name, String pass) {
-        MainFile mainFile = new MainFile(name + ".Cho");
+    public boolean createAccount(String name, String pass) {
+        MainFile mainFile = new MainFile(name);
         if(!mainFile.isMade()) {
-            mainFile.openForWriting();
+            mainFile.openForWriting(false);
             mainFile.writeToFile(name + "," + pass + "\n\n");
             mainFile.closeForWriting();
+            return true;
         } else {
-            System.out.println("Already in use");
+            return false;
         }
     }
 
@@ -131,7 +132,7 @@ public class AccountData {
      */
     public String getUserName(String name) {
         String line;
-        MainFile mainFile = new MainFile(name + ".Cho");
+        MainFile mainFile = new MainFile(name);
         mainFile.openForReading();
         while ((line = mainFile.getLine()) != null) {
             if (line.split(",")[0].equals(name)) {
@@ -151,7 +152,7 @@ public class AccountData {
      */
     public String getPassword(String name) {
         String line;
-        MainFile mainFile = new MainFile(name + ".Cho");
+        MainFile mainFile = new MainFile(name);
         mainFile.openForReading();
         while ((line = mainFile.getLine()) != null) {
             if (line.split(",")[0].equals(name)) {
@@ -172,7 +173,7 @@ public class AccountData {
      * @param newName: A String containing the new name of the file or the user's new username
      */
     public void changeUsername(String oldName, String newName) {
-        MainFile mainFile = new MainFile(oldName + ".Cho");
+        MainFile mainFile = new MainFile(oldName);
         mainFile.replace(oldName, newName);
         mainFile.rename(newName);
     }
@@ -186,7 +187,7 @@ public class AccountData {
      * @param oldPass: A String containing the old password that the method replaces
      */
     public void changePassword(String name, String oldPass, String newPass){
-        MainFile main = new MainFile(name + ".Cho");
+        MainFile main = new MainFile(name);
         main.replace(oldPass, newPass);
     }
 }

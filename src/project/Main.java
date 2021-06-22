@@ -89,6 +89,7 @@ public class Main extends Application {
         Scene scene = new Scene(borderPane, WINDOW_WIDTH, WINDOW_HEIGHT);
         scene.getStylesheets().add(this.getClass().getResource("styleOne.css").toExternalForm());
         borderPane.setId("homeBackground");
+        borderPane.requestFocus();
 
         InputStream tempIcon = getClass().getResourceAsStream("/images/programIcon.png");
 
@@ -132,6 +133,7 @@ public class Main extends Application {
                     LoginController loginController = loginLoader.getController();
                     loginController.setHomeScene(scene);
                     Scene loginScene = new Scene(root);
+                    root.requestFocus();
                     loginScene.getStylesheets().add(this.getClass().getResource("loginStyle.css").toExternalForm());
                     root.setId("homeBackground");
                     primaryStage.setScene(loginScene);
@@ -150,6 +152,7 @@ public class Main extends Application {
                     SignupController signupController = signupLoader.getController();
                     signupController.setHomeScene(scene);
                     Scene loginScene = new Scene(root);
+                    root.requestFocus();
                     loginScene.getStylesheets().add(this.getClass().getResource("loginStyle.css").toExternalForm());
                     root.setId("homeBackground");
                     primaryStage.setScene(loginScene);

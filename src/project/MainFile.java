@@ -29,22 +29,6 @@ public class MainFile {
      * This program opens the MainFile object for
      * writing
      */
-    public void openForWriting() {
-        try {
-            in = new FileWriter(file);
-            writeFile = new BufferedWriter(in);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * This is an overloaded method, it allows for
-     * a file to be opened, but also allows for it to
-     * be appended as well
-     * @param mode: The boolean on allowing the file to be
-     *            appended on
-     */
     public void openForWriting(boolean mode) {
         try {
             in = new FileWriter(file, mode);
@@ -158,7 +142,7 @@ public class MainFile {
 
         replaceAll(containment, oldString, newString);
 
-        openForWriting();
+        openForWriting(false);
 
         writeToFile(containment.toString());
 

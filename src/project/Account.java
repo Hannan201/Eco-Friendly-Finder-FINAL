@@ -47,6 +47,6 @@ public class Account implements Options {
     }
 
     public static boolean accountIsMade(String username) {
-        return MainFile.isMade(username + ".Cho");
+        return MainFile.isMade(username);
     }
 }
