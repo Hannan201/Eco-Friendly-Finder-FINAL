@@ -7,6 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GettingLinks {
@@ -14,11 +15,18 @@ public class GettingLinks {
     public static void main(String[] args) {
         Scanner e = new Scanner(System.in);
         GettingLinks test = new GettingLinks();
-        ArrayList<String> myLinks = new ArrayList<>();
-        test.searchAmazon(5, myLinks, e);
+        ArrayList<Product> myProducts = new ArrayList<>();
+        test.searchAmazon(5, myProducts, e);
         System.out.println("Arraylist contents: ");
-        for(String s : myLinks) {
-            System.out.println(s);
+        int number = 0;
+        for(Product p : myProducts) {
+            number += 1;
+            System.out.println("\nProduct #" + number + ":");
+            System.out.println("Name: " + p.getName());
+            //System.out.println("Money required for purchasing: " + p.getPrice());
+            System.out.println("Customer approval level: " + p.getRating());
+            //System.out.println("Reviews: " + p.getReviews());
+            System.out.println("Link to the product so you can buy it: " + p.getLink());
         }
     }
 
@@ -34,7 +42,9 @@ public class GettingLinks {
      * @param theLinks : The Arraylist which will contain all
      *                the links that were searched
      */
-    public void searchAmazon(int numOfLinks, ArrayList<String> theLinks, Scanner s) {
+    public void searchAmazon(int numOfLinks, ArrayList<Product> theLinks, Scanner s) {
+        String link = null;
+        String[] searchLinks = new String[numOfLinks];
         System.out.println("What would you like to search?");
         String query = s.nextLine();
         if(!query.isEmpty()) {
@@ -48,26 +58,51 @@ public class GettingLinks {
                         .data("is_check", "1")
                         .method(Connection.Method.POST)
                         .get();
-                Elements es = d.getElementsByClass("a-size-base-plus a-color-base a-text-normal");
+
                 Elements links = d.getElementsByClass("a-link-normal a-text-normal");
                 if(!links.isEmpty()) {
                     for (int i = 0; i < numOfLinks; i++) {
-
-                        Element link = links.get(i);
-                        Element e = es.get(i);
-
-                        String name = e.text();
-                        String url = link.attributes().get("href");
-
-                        System.out.println((i+1) + ")");
-                        System.out.println("Name: [" + name + "]");
-                        System.out.println("Link: " + "[" + prefix + url + "]\n");
-                        theLinks.add(prefix + url);
+                        link = prefix + links.get(i).attributes().get("href");
+                        searchLinks[i] = link;
                     }
+                }
+                for(int sl = 0; sl < searchLinks.length; sl +=1){
+                    //System.out.println(searchLinks[sl]);
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
+                for(int in = 0; in < numOfLinks; in += 1) {
+                    try {
+                        Document doc = Jsoup.connect(searchLinks[in])
+                                .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36")
+                                .maxBodySize(0)
+                                .timeout(0)
+                                .data("is_check", "1")
+                                .method(Connection.Method.POST)
+                                .get();
+
+                        Elements names  = doc.getElementsByClass("a-size-large product-title-word-break");
+                        Elements ratings = doc.getElementsByClass("a-icon-alt");
+
+                        String e = doc.html();
+                        System.out.println(e.contains("<script>"));
+
+                        String name = names.get(0).text();
+                        String rating = ratings.get(0).text();
+                        if (!rating.contains("stars")) {
+                            rating = "N/A";
+                        }
+
+                        Product product = new Product();
+                        product.setName(name);
+                        product.setLink(searchLinks[in]);
+                        product.setRating(rating);
+                        theLinks.add(product);
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
         } else {
             System.out.println("Nothing");
         }

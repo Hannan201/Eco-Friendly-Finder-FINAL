@@ -3,6 +3,7 @@ package project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +14,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class SettingsController {
 
@@ -33,10 +36,14 @@ public class SettingsController {
         this.stage = stage;
     }
 
-    public void setCurrentUser(String string) {
-        this.currentUsername = string;
+    public void setCurrentUsername(String newUsername) {
+        this.currentUsername = newUsername;
         accountData = new AccountData();
-        account = new Account(currentUsername, accountData.getPassword(currentUsername));
+        account = new Account(this.currentUsername, accountData.getPassword(this.currentUsername));
+    }
+
+    public String getCurrentUsername() {
+        return this.currentUsername;
     }
 
     public void handleUsername() {
@@ -84,7 +91,7 @@ public class SettingsController {
             newUsername.clear();
         } else {
             account.changeUsername(newName);
-            this.currentUsername = newName;
+            setCurrentUsername(newName);
             popUpWindow("Username changed!");
             closeWindow();
         }
@@ -113,19 +120,16 @@ public class SettingsController {
 
     public void openWindow(String name) {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(this.getClass().getResource(name)));
+        loader.setController(this);
         try {
             Parent root = loader.load();
-            SettingsController settingsController =
-                    loader.getController();
-            settingsController.setCurrentUser(currentUsername);
             Scene scene = new Scene(root);
             stage = new Stage();
-            settingsController.setStage(stage);
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
-            System.out.println("IOException:" + e.getMessage());
+            e.printStackTrace();
         }
     }
 

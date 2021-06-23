@@ -86,7 +86,7 @@ public class LoginController {
             root = loader.load();
             Scene scene = new Scene(root);
             LoggedinController loggedinController = loader.getController();
-            loggedinController.setUser(username);
+            loggedinController.setCurrentUsername(username);
             loggedinController.setStage(stage);
             stage.setScene(scene);
         } catch (IOException e) {

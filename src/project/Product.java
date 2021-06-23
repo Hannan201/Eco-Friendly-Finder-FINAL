@@ -18,6 +18,8 @@ public class Product {
         this.reviews = reviews;
     }
 
+    public Product () {}
+
     public String getName() {
         return name;
     }
