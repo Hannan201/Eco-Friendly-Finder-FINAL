@@ -1,8 +1,5 @@
 package project;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-
 public class Account implements Options {
 
     private String username;
