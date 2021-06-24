@@ -1,9 +1,5 @@
 package project;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSpan;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -108,32 +104,5 @@ public class GettingLinks {
         } else {
             System.out.println("Nothing");
         }
-    }
-
-    public Product parseWithJavascript(Product product) {
-        java.util.logging.Logger.getLogger("com.gargoylesoftware");
-        System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
-        WebClient webClient = new WebClient(BrowserVersion.FIREFOX);
-        webClient.getOptions().setJavaScriptEnabled(true);
-        webClient.getOptions().setCssEnabled(true);
-
-        try {
-            HtmlPage page = webClient.getPage("https://www.amazon.ca/Apple-iPhone-GSM-Unlocked-5-8/dp/B07757R58W/ref=sr_1_5?dchild=1&is_check=1&keywords=iPhone+X&qid=1624457708&sr=8-5");
-            String name = page.getElementsById("titleSection").get(0).asNormalizedText();
-            String rating = ((HtmlSpan)(page.getByXPath("//span[@class = 'a-icon-alt']").get(0))).getTextContent();
-            String price = ((HtmlSpan)(page.getByXPath("//span[@class = '_p13n-desktop-carousel_price_p13n-sc-price__bCZQt']").get(0))).getTextContent();
-            product.setName(name);
-            product.setRating(rating);
-            product.setPrice(price);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        webClient.close();
-        return product;
-    }
-
-    public boolean requiresJavascript(Elements elements) {
-        return elements == null || elements.isEmpty();
     }
 }
