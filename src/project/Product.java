@@ -7,15 +7,13 @@ public class Product {
     private String link;
     private String price;
     private String rating;
-    private ArrayList<String> reviews;
 
     public Product(String name, String link, String price,
-                   String rating, ArrayList<String> reviews) {
+                   String rating) {
         this.name = name;
         this.link = link;
         this.price = price;
         this.rating = rating;
-        this.reviews = reviews;
     }
 
     public Product () {}
@@ -26,14 +24,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ArrayList<String> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(ArrayList<String> reviews) {
-        this.reviews = reviews;
     }
 
     public String getLink() {
