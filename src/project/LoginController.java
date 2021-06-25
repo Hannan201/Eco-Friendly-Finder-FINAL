@@ -88,9 +88,12 @@ public class LoginController {
             LoggedinController loggedinController =
                     loader.getController();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(this.getClass().getResource("searchPage.css").toExternalForm());
+            root.setId("searchBackground");
             loggedinController.setCurrentUsername(username);
             loggedinController.setLoggedInController(loggedinController);
             loggedinController.setStage(stage);
+            loggedinController.setHomeScene(homeScene);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();

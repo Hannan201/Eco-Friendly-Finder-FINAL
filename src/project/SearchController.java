@@ -75,6 +75,7 @@ public class SearchController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (again) {
+            query = "Eco " + query;
             GettingLinks gettingLinks = new GettingLinks();
             products = gettingLinks.searchAmazon(numOfLinks, query);
             mainScroller.setPannable(false);

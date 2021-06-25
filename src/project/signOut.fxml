@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="600.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label text="Are you sure you would like to log out?" textFill="WHITE">
@@ -16,7 +15,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="15.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 0;" text="Log out" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#returnToMain" style="-fx-background-color: blue; -fx-background-radius: 0;" text="Log out" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

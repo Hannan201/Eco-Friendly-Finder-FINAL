@@ -28,18 +28,24 @@ public class SettingsController {
     @FXML
     private TextField newUsername;
 
+    private Scene homeScene;
     private String currentUsername;
     private Account account;
     private AccountData accountData;
+    private Stage stage2;
 
     public void setStage(Stage stage) {
-        this.stage = stage;
+        this.stage2 = stage;
     }
 
     public void setCurrentUsername(String newUsername) {
         this.currentUsername = newUsername;
         accountData = new AccountData();
         account = new Account(this.currentUsername, accountData.getPassword(this.currentUsername));
+    }
+
+    public void setHomeScene(Scene scene) {
+        this.homeScene = scene;
     }
 
     public String getCurrentUsername() {
@@ -60,6 +66,11 @@ public class SettingsController {
 
     public void closeWindow() {
         stage.close();
+    }
+
+    public void returnToMain() {
+        stage.close();
+        stage2.setScene(homeScene);
     }
 
     public void changePass() {

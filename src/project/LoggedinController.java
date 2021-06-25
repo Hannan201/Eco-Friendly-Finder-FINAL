@@ -27,6 +27,8 @@ public class LoggedinController implements Initializable {
     @FXML
     private BorderPane borderPane;
 
+    private Scene homeScene;
+
     @FXML
     private TextField searchField;
 
@@ -42,6 +44,10 @@ public class LoggedinController implements Initializable {
     private SettingsController settingsController;
     private SearchController searchController;
     private LoggedinController loggedinController;
+
+    public void setHomeScene(Scene scene) {
+        this.homeScene = scene;
+    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -67,6 +73,7 @@ public class LoggedinController implements Initializable {
         }
         try {
             Parent root = loader.load();
+            root.setId("searchBackground");
             borderPane.setCenter(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -155,6 +162,8 @@ public class LoggedinController implements Initializable {
     public void settingsScene() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("settingsScene.fxml"));
         settingsController.setCurrentUsername(currentUsername);
+        settingsController.setHomeScene(homeScene);
+        settingsController.setStage(stage);
         loader.setController(settingsController);
         try {
             BorderPane root = loader.load();
@@ -169,6 +178,7 @@ public class LoggedinController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         settingsController = new SettingsController();
         searchController = new SearchController();
+        borderPane.setId("#background");
 
         if (start != null) {
             start.setOnAction(new EventHandler<ActionEvent>() {

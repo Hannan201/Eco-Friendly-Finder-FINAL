@@ -1,0 +1,5 @@
+#searchBackground {
+    -fx-background-image: url("/images/searchBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
