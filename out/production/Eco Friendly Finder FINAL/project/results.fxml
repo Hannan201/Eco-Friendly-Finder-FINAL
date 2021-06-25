@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="mainScroller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="1200.0" style="-fx-background-color: #2c2e2d;" stylesheets="@sideBar.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.SearchController">
+<ScrollPane fx:id="mainScroller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="1200.0" style="-fx-background-color: #2c2e2d;" stylesheets="@sideBar.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="670.0" prefWidth="1200.0" style="-fx-background-color: #2c2e2d;">
          <top>

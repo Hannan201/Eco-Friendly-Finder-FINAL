@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="127.0" prefWidth="600.0" style="-fx-background-color: #2d2e2e;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.SearchController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="127.0" prefWidth="600.0" style="-fx-background-color: #2d2e2e;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label text="Are you sure you'd like to exit?&#10;Make sure all desired products are saved&#10;" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -16,7 +16,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="46.0" prefWidth="600.0" spacing="25.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: blue; -fx-background-radius: 0;" text="Continue" textFill="WHITE" />
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="86.0" onAction="#complete" style="-fx-background-color: blue; -fx-background-radius: 0;" text="Continue" textFill="WHITE" />
             <Button layoutX="270.0" layoutY="45.0" mnemonicParsing="false" onAction="#cancelled" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: red; -fx-background-radius: 0;" text="Cancel" textFill="WHITE" />
          </children>
       </HBox>

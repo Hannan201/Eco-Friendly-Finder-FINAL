@@ -83,12 +83,12 @@ public class LoggedinController implements Initializable {
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("results.fxml"));
             loader.setController(searchController);
             try {
-                Parent root = loader.load();
-                searchController = loader.getController();
                 searchController.setQuery(search);
                 searchController.setNumOfLinks(numOfProducts);
                 searchController.setUsername(currentUsername);
                 searchController.setStage(stage);
+                searchController.setPrevious(stage.getScene());
+                Parent root = loader.load();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
             } catch (IOException e) {
@@ -168,6 +168,7 @@ public class LoggedinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         settingsController = new SettingsController();
+        searchController = new SearchController();
 
         if (start != null) {
             start.setOnAction(new EventHandler<ActionEvent>() {
