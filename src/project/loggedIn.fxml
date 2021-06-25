@@ -17,7 +17,7 @@
                   <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #000000; -fx-background-radius: 0;" text="Saved Products" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#viewScene" prefHeight="49.0" prefWidth="400.0" style="-fx-background-color: #000000; -fx-background-radius: 0;" text="Saved Products" textFill="WHITE">
                <font>
                   <Font name="Comic Sans MS Bold" size="24.0" />
                </font>
@@ -40,14 +40,14 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1200.0">
                <children>
-                  <TextField prefHeight="14.0" prefWidth="638.0" promptText="What would you like to search?" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-radius: 25;">
+                  <TextField fx:id="searchField" prefHeight="14.0" prefWidth="638.0" promptText="What would you like to search?" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-radius: 25;">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </TextField>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="143.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1pt; -fx-background-insets: 0;" text="Search">
+            <Button mnemonicParsing="false" onAction="#startSearch" prefHeight="50.0" prefWidth="143.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1pt; -fx-background-insets: 0;" text="Search">
                <font>
                   <Font name="Comic Sans MS Bold" size="22.0" />
                </font>

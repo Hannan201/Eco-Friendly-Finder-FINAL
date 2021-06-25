@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="621.0" prefWidth="1200.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.LoggedinController">
+<BorderPane prefHeight="621.0" prefWidth="1200.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -19,14 +19,14 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1200.0">
                <children>
-                  <TextField prefHeight="14.0" prefWidth="638.0" promptText="What would you like to search?" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-radius: 25;">
+                  <TextField fx:id="searchField" prefHeight="14.0" prefWidth="638.0" promptText="What would you like to search?" style="-fx-background-radius: 25; -fx-border-color: #000000; -fx-border-radius: 25;">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </TextField>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="143.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1pt; -fx-background-insets: 0;" text="Search">
+            <Button mnemonicParsing="false" onAction="#startSearch" prefHeight="50.0" prefWidth="143.0" style="-fx-background-radius: 0; -fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1pt; -fx-background-insets: 0;" text="Search">
                <font>
                   <Font name="Comic Sans MS Bold" size="22.0" />
                </font>

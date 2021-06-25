@@ -1,0 +1,38 @@
+.scroll-bar:vertical .track {
+    -fx-background-color: #3c3c3d;
+    -fx-background-radius: 0;
+    -fx-border-color: #1c1c1c;
+    -fx-border-width: 2;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #1c1c1c;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical .increment-button {
+    -fx-background-color: #1c1c1c;
+    -fx-background-radius: 0;
+    -fx-border-color: #1c1c1c;
+    -fx-border-width: 2;
+}
+
+.scroll-bar:vertical .increment-arrow {
+    -fx-background-color: #1c1c1c;
+}
+
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: #1c1c1c;
+}
+
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: #1c1c1c;
+    -fx-background-radius: 0;
+    -fx-border-color: #1c1c1c;
+    -fx-border-width: 2;
+}
+
+
+.scroll-pane > corner {
+    -fx-background-color: #3c3c3d;
+}

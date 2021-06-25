@@ -15,8 +15,9 @@ public class GettingLinks {
     public static void main(String[] args) {
         Scanner e = new Scanner(System.in);
         GettingLinks test = new GettingLinks();
-        ArrayList<Product> myProducts = new ArrayList<>();
-        test.searchAmazon(1, myProducts, e);
+        System.out.println("Search > ");
+        String query = e.nextLine();
+        ArrayList<Product> myProducts = test.searchAmazon(5, query);
         System.out.println("Arraylist contents: ");
         int number = 0;
         for(Product p : myProducts) {
@@ -38,18 +39,14 @@ public class GettingLinks {
      *
      * @param numOfLinks : The integer value specifying the
      *                  amount of links/products to be searched for
-     * @param theLinks : The Arraylist which will contain all
-     *                the links that were searched
      */
-    public void searchAmazon(int numOfLinks, ArrayList<Product> theLinks, Scanner s) {
-        System.out.println("What would you like to search?");
-        String query;// = s.nextLine();
-        query = "Forza Horizon";
+    public ArrayList<Product> searchAmazon(int numOfLinks, String query) {
+        ArrayList<Product> theLinks = new ArrayList<>();
         if(!query.isEmpty()) {
             try {
                 String prefix = "https://www.amazon.ca";
                 String URL = prefix + "/s?k=" + query + "&ref=nb_sb_noss";
-                Document d = Jsoup.connect(URL)
+                Document document = Jsoup.connect(URL)
                         .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0")
                         .maxBodySize(0)
                         .timeout(0)
@@ -57,25 +54,37 @@ public class GettingLinks {
                         .method(Connection.Method.POST)
                         .get();
 
-                    Elements links = d.getElementsByClass("a-link-normal a-text-normal");
-                    Elements names = d.getElementsByClass("a-size-base-plus a-color-base a-text-normal");
-                    Elements prices = d.getElementsByClass("a-offscreen");
-                    //Containing "a-icon a-icon-star-small"
-                    Elements ratings = d.getElementsByClass("");
-                    if (!links.isEmpty()) {
+                    Elements productContainer = document.getElementsByClass("sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 sg-col sg-col-4-of-20");                    Elements links = productContainer.first().getElementsByClass("a-link-normal a-text-normal");
                         for (int i = 0; i < numOfLinks; i++) {
-                            Product product = new Product();
-                            String name = names.get(i).text();
-                            String link = prefix + links.get(i).attributes().get("href");
-                            String price = prices.get(i).text();
+                            String name = "<Unknown name>";
+                            String link = "Nope :(";
+                            String price = "Unknown";
+                            String rating = "N/A";
+                            Elements names = productContainer.get(i).getElementsByClass("a-size-base-plus a-color-base a-text-normal");
+                            if(!names.isEmpty()) {
+                                name = names.get(0).text();
+                            }
+                            Elements leLinks = productContainer.get(i).getElementsByClass("a-link-normal a-text-normal");
+                            if(!leLinks.isEmpty()) {
+                                link = prefix + leLinks.get(0).attributes().get("href");
+                            }
+                            Elements prices = productContainer.get(i).getElementsByClass("a-offscreen");
+                            if(!prices.isEmpty()) {
+                                price = prices.get(0).text();
+                            }
+                            Elements ratings = productContainer.get(i).getElementsByClass("a-icon-alt");
+                            if(!ratings.isEmpty()) {
+                                rating = ratings.get(0).getElementsByClass("a-icon-alt").text();
+                            }
+                            Product product = new Product(name, link, price, rating);
+                            theLinks.add(product);
                         }
-
-                    }
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                e.printStackTrace();
             }
         } else {
             System.out.println("Nothing");
         }
+        return theLinks;
     }
 }

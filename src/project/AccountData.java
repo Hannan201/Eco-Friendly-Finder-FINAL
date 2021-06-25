@@ -116,7 +116,7 @@ public class AccountData {
         MainFile mainFile = new MainFile(name + ".Cho");
         if(!mainFile.isMade()) {
             mainFile.openForWriting(false);
-            mainFile.writeToFile(name + "," + pass + "\n\n");
+            mainFile.writeToFile(name + "," + pass + "\n");
             mainFile.closeForWriting();
             return true;
         } else {

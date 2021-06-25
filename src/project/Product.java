@@ -14,9 +14,16 @@ public class Product {
         this.link = link;
         this.price = price;
         this.rating = rating;
+        formatRating(rating);
     }
 
     public Product () {}
+
+    private void formatRating(String rating) {
+        if (rating.contains("5")) {
+            this.rating = rating.substring(0, rating.indexOf(" ")) + "/5.0";
+        }
+    }
 
     public String getName() {
         return name;

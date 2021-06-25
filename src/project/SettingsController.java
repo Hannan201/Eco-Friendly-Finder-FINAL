@@ -83,7 +83,6 @@ public class SettingsController {
     }
 
     public void changeName() {
-
         String newName = newUsername.getText();
 
         if ((newName == null) || (newName.isEmpty())) {
